@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <search>
+        <date title="日期" submitflag="" current="false" name="workDate" value="" type="date" message="" />
+    </search>
+</root>
