@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <form layouttype="1;2" value="提交;驳回">
+        <table title="基本信息" expend="true" editfield="true" id="content" columns="2">
+            <tr parent="">
+                <td>任务主题</td>
+                <td>2015-11-13_0000010</td>
+            </tr>
+            <tr parent="">
+                <td>任务接收人</td>
+                <td>方博文,何少辉,冀琴霞,李园园,石磊,史凌燕,宋丁一,苏丽丽,王新光</td>
+            </tr>
+            <tr parent="">
+                <td>任务类型</td>
+                <td />
+            </tr>
+            <tr parent="">
+                <td>来源分类</td>
+                <td>上级安排</td>
+            </tr>
+            <tr parent="">
+                <td>开始时间</td>
+                <td>2015-11-13 17:00:31</td>
+            </tr>
+            <tr parent="">
+                <td>结束时间</td>
+                <td>2015-11-13 0:00:00</td>
+            </tr>
+            <tr parent="">
+                <td>工作内容</td>
+                <td>2015-11-13_0000010</td>
+            </tr>
+            <tr parent="">
+                <td>优先级</td>
+                <td />
+            </tr>
+        </table>
+        <table title="任务步骤" expend="true" editfield="true" id="content" columns="2">
+            <tr parent="">
+                <td>任务内容</td>
+                <td>2015-11-13_0000010</td>
+            </tr>
+            <tr parent="">
+                <td>任务接收人</td>
+                <td>shilei01.yssh,songdy01.yssh,sulily.yssh</td>
+            </tr>
+            <tr parent="">
+                <td>实际完成人</td>
+                <td>
+                    <label name="processPerson" value="" displayname="何少辉" message="" submitflag="processPerson" link="dataId" />
+                </td>
+            </tr>
+            <tr parent="">
+                <td>开始时间</td>
+                <td>2015-11-13</td>
+            </tr>
+            <tr parent="">
+                <td>截止时间</td>
+                <td>2015-11-21</td>
+            </tr>
+            <tr parent="">
+                <td>完成时间</td>
+                <td />
+            </tr>
+            <tr parent="">
+                <td>完成状态</td>
+                <td>
+                    <button title="完成" name="dataId" layouttype="8" displayname="何少辉" hiddenvalue="hesh.yssh" value="e7b8da85-42b1-4e8f-a665-8cd1295ad075" enable="1" />
+                </td>
+            </tr>
+        </table>
+        <table title="消息列表" expend="true" editfield="true" id="content" columns="1">
+            <tr parent="">
+                <td>
+                    <textarea value="" name="message" username="何少辉" alt="" message="" submitflag="message" />
+                </td>
+            </tr>
+            <tr parent="">
+                <td>
+                    <linklist id="0" name="mainPerson" value="" username="何少辉" mulit="true" title="添加转发" message="" displayname="" submitflag="mainPerson" />
+                </td>
+            </tr>
+            <tr parent="">
+                <td>
+                    <event title="回复" name="show1" layouttype="5" value="hesh.yssh" username="何少辉" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <operation layouttype="2">
+        <table title="请选择驳回原因" expend="true" editfield="true" id="content" columns="1">
+            <tr parent="">
+                <td>
+                    <refuse name="refuse" title="请选择驳回原因" value="" mulit="" submitflag="refuse" message="请选择驳回原因">
+                        <option checked="true" value="bushibenrenzhize">不是本人职责</option>
+                        <option checked="true" value="qita">其他</option>
+                    </refuse>
+                </td>
+            </tr>
+            <tr parent="">
+                <td>
+                    <textarea name="comment" alt="请输入驳回原因" message="请输入驳回原因" value="请输入驳回原因" link="qita" submitflag=""/>
+                </td>
+            </tr>
+        </table>
+    </operation>
+</root>
