@@ -7,7 +7,12 @@
 //
 
 #import "ViewController.h"
-@interface ViewController ()
+#import "keyBoardViewController.h"
+#define CELL_HEIGHT  40
+@interface ViewController ()<UITableViewDataSource,UITableViewDelegate>{
+    UITableView * _tableView;
+    NSArray * _titleArray;
+}
 
 @end
 
@@ -17,13 +22,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self prepareData];
+}
+-(void)configureUI{
     
+
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, KSCREENWIDTH, KSCREENHEIGH) style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
+}
+
+-(void)prepareData{
+    _titleArray=@[@"keyBoard"];
     
 }
 
-
--(void)prepareData{
+-(void)prepareData1{
     NSString * xmlPath = [[NSBundle mainBundle] pathForResource:@"taskDetail" ofType:@"xml"];
     NSString * xmlString = [[NSString alloc]initWithContentsOfFile:xmlPath encoding:NSUTF8StringEncoding error:nil];
     DDXMLDocument * document = [[DDXMLDocument alloc]initWithXMLString:xmlString options:0 error:nil];
@@ -105,6 +119,43 @@
     NSLog(@"%@",operationArray);
 }
 
+
+
+#pragma mark - tableViewDataSourceDelegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 2;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString * cellId = @"cellId";
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
+    cell.textLabel.text = _titleArray[indexPath.row];
+    return cell;
+}
+
+
+#pragma mark -tableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return CELL_HEIGHT;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    switch (indexPath.row) {
+        case 0:
+        {
+            keyBoardViewController * keyBoardVC =[[keyBoardViewController alloc]init];
+            [self.navigationController pushViewController:keyBoardVC animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

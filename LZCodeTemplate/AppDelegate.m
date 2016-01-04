@@ -7,16 +7,38 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ViewController.h"
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
+void UncaughtExceptionHandler(NSException *exception) {
+    NSArray *arr = [exception callStackSymbols];
+    NSString *reason = [exception reason];
+    NSString *name = [exception name];
+    
+    NSString *urlStr = [NSString stringWithFormat:@"mailto://miaolizhuang@ishinetech.com?subject=bug报告&body=感谢您的配合!<br><br><br>"
+                        "错误详情:<br>%@<br>--------------------------<br>%@<br>---------------------<br>%@",
+                        name,reason,[arr componentsJoinedByString:@"<br>"]];
+    
+    NSURL *url = [NSURL URLWithString:[urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    [[UIApplication sharedApplication] openURL:url];
+    
+    NSString *message = [NSString stringWithFormat:@"错误详情:<br>%@<br>--------------------------<br>%@<br>---------------------<br>%@",
+                         name,reason,[arr componentsJoinedByString:@"<br>"]];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:message forKey:@"CustomException"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    NSSetUncaughtExceptionHandler (&UncaughtExceptionHandler);
+    ViewController * vc= [[ViewController alloc]init];
+    UINavigationController * nav= [[UINavigationController alloc]initWithRootViewController:vc];
+    self.window.rootViewController = nav;
     return YES;
 }
 
