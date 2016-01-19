@@ -1,107 +1,293 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-    <form layouttype="1;2" value="提交;驳回">
-        <table title="基本信息" expend="true" editfield="true" id="content" columns="2">
+    <form layouttype="15" value="保存">
+        <table title="工作任务详细" expend="true" editfield="true" id="" columns="2" name="show" type="1">
             <tr parent="">
+                <td>来源依据</td>
+                <td>
+                    <text value="" name="sourceBasis" alt="" message="来源依据必填！" submitflag="sourceBasis" />
+                </td>
+            </tr>
+            <tr parent="">
+                <td>依据编号文号</td>
+                <td>
+                    <text value="" name="basisNo" alt="" message="依据编号文号必填！" submitflag="basisNo" />
+                </td>
+            </tr>
+            <tr parent="">
+                <td>工作耗时</td>
+                <td>
+                    <text value="" name="taskTimeout" alt="" message="工作耗时不能为空！" submitflag="taskTimeout" keyboard="number" />
+                </td>
+            </tr>
+            <tr parent="">
+                <td>岗位职责</td>
+                <td>
+                    <select id="" name="dutyName" value="" alt="" multi="" message="岗位职责不能为空！" submitflag="dutyName" refresh="1" />
+                </td>
+            </tr>
+            <tr parent="">
+                <td>行为描述</td>
+                <td>
+                    <textarea name="behaviorDesc" value="" submitflag="behaviorDesc" alt="" message="行为描述必填！" />
+                </td>
+            </tr>
+        </table>
+        <table title="任务频次" expend="true" editfield="true" id="" columns="2" name="show" type="2">
+            <tr parent="">
+                <td>发送目标</td>
+                <td>
+                    <select id="" name="publicTarget" value="10" alt="" multi="false" message="发送目标不能为空！" submitflag="publicTarget" refresh="2">
+                        <option value="10" checked="true">本系统</option>
+                        <option value="20">BPM</option>
+                    </select>
+                </td>
+            </tr>
+            <tr parent="10">
                 <td>任务主题</td>
-                <td>2015-11-13_0000010</td>
+                <td>
+                    <text value="" name="subject" alt="" message="任务主题必填！" submitflag="subject" />
+                </td>
             </tr>
-            <tr parent="">
+            <tr parent="10">
                 <td>任务接收人</td>
-                <td>方博文,何少辉,冀琴霞,李园园,石磊,史凌燕,宋丁一,苏丽丽,王新光</td>
+                <td>
+                    <linklist id="0" name="mainPerson" displayname="" value="" alt="" multi="true" message="任务接收人不能为空！" submitflag="mainPerson" />
+                </td>
             </tr>
-            <tr parent="">
+            <tr parent="10">
+                <td>责任人</td>
+                <td>
+                    <linklist id="0" name="dutyMan" displayname="何少辉" value="hesh.yssh$何少辉" alt="" multi="true" message="责任人不能为空！" submitflag="dutyMan" />
+                </td>
+            </tr>
+            <tr parent="10">
+                <td>任务级别</td>
+                <td>
+                    <select id="" name="taskLevel" value="" alt="" multi="false" message="" submitflag="taskLevel" refresh="1">
+                        <option value="1">极高</option>
+                        <option value="2">高</option>
+                        <option value="3" checked="true">普通</option>
+                        <option value="4">低</option>
+                        <option value="5">极低</option>
+                    </select>
+                </td>
+            </tr>
+            <tr parent="10">
                 <td>任务类型</td>
-                <td />
+                <td>
+                    <select id="" name="taskType" value="" alt="" multi="false" message="任务类型不能为空！" submitflag="taskType" refresh="1">
+                        <option value="7">工作汇报</option>
+                        <option value="8">会议安排</option>
+                        <option value="9">测试消息（练习用途,定期删除）</option>
+                        <option value="10">工作安排（会议纪要）</option>
+                        <option value="1">通知提醒</option>
+                        <option value="2">协助请求</option>
+                        <option value="5">安全隐患</option>
+                        <option value="6">工作安排</option>
+                    </select>
+                </td>
             </tr>
-            <tr parent="">
-                <td>来源分类</td>
-                <td>上级安排</td>
-            </tr>
-            <tr parent="">
-                <td>开始时间</td>
-                <td>2015-11-13 17:00:31</td>
-            </tr>
-            <tr parent="">
-                <td>结束时间</td>
-                <td>2015-11-13 0:00:00</td>
-            </tr>
-            <tr parent="">
-                <td>工作内容</td>
-                <td>2015-11-13_0000010</td>
-            </tr>
-            <tr parent="">
-                <td>优先级</td>
-                <td />
-            </tr>
-        </table>
-        <table title="任务步骤" expend="true" editfield="true" id="content" columns="2">
-            <tr parent="">
+            <tr parent="10">
                 <td>任务内容</td>
-                <td>2015-11-13_0000010</td>
-            </tr>
-            <tr parent="">
-                <td>任务接收人</td>
-                <td>shilei01.yssh,songdy01.yssh,sulily.yssh</td>
-            </tr>
-            <tr parent="">
-                <td>实际完成人</td>
                 <td>
-                    <label name="processPerson" value="" displayname="何少辉" message="" submitflag="processPerson" link="dataId" />
+                    <textarea name="taskContent" value="" submitflag="taskContent" alt="" message="任务内容必填！" />
+                </td>
+            </tr>
+            <tr parent="10">
+                <td>任务耗时（小时）</td>
+                <td>
+                    <text value="" name="taskHoure" alt="" message="任务耗时不能为空！" submitflag="taskHoure" keyboard="number" />
+                </td>
+            </tr>
+            <tr parent="20">
+                <td>流程名称</td>
+                <td>
+                    <select id="" name="subject2" value="" alt="" multi="false" message="流程名称不能为空！" submitflag="subject2" refresh="1">
+                        <option value="JD15_月修理费预算调整流程" checked="false">JD15_月修理费预算调整流程</option>
+                        <option value="BW06_集体户口管理业务流程" checked="false">BW06_集体户口管理业务流程</option>
+                        <option value="XX14_笔记本借用审批流程" checked="false">XX14_笔记本借用审批流程</option>
+                        <option value="JW05C_效能监察成果申报管理业务流程" checked="false">JW05C_效能监察成果申报管理业务流程</option>
+                        <option value="DW10_因公出国境管理业务流程" checked="false">DW10_因公出国境管理业务流程</option>
+                        <option value="FZ10_固定资产投资项目概算管理业务流程_申请" checked="false">FZ10_固定资产投资项目概算管理业务流程_申请</option>
+                        <option value="FL06_招投标管理业务流程" checked="false">FL06_招投标管理业务流程</option>
+                        <option value="XX04B_桌面云有关申请审批流程" checked="false">XX04B_桌面云有关申请审批流程</option>
+                        <option value="AJ28_检查问题申诉流程" checked="false">AJ28_检查问题申诉流程</option>
+                        <option value="XZ26_后勤服务费用结算和采暖费液化气补差报销管理业务流程" checked="false">XZ26_后勤服务费用结算和采暖费液化气补差报销管理业务流程</option>
+                        <option value="JW08_效能监察管理流程" checked="false">JW08_效能监察管理流程</option>
+                        <option value="XX13A_实时数据库系统基础数据变更流程" checked="false">XX13A_实时数据库系统基础数据变更流程</option>
+                        <option value="XX07_指挥中心系统管理业务流程" checked="false">XX07_指挥中心系统管理业务流程</option>
+                        <option value="CW15_客户信用主数据审批流程" checked="false">CW15_客户信用主数据审批流程</option>
+                        <option value="BG08_安全环保事件信息报告处置管理业务流程" checked="false">BG08_安全环保事件信息报告处置管理业务流程</option>
+                        <option value="BG13_接待事项通知单" checked="false">BG13_接待事项通知单</option>
+                        <option value="AJ27_办理承包商和相关业务及绿色通道流程" checked="false">AJ27_办理承包商和相关业务及绿色通道流程</option>
+                        <option value="XX08_信息安全管理业务流程" checked="false">XX08_信息安全管理业务流程</option>
+                        <option value="GH01_厂务公开管理业务流程" checked="false">GH01_厂务公开管理业务流程</option>
+                        <option value="CW07_生产统计信息系统管理业务流程" checked="false">CW07_生产统计信息系统管理业务流程</option>
+                        <option value="RL09A_内部培训管理业务流程" checked="false">RL09A_内部培训管理业务流程</option>
+                        <option value="QG11B_兑现奖励流程" checked="false">QG11B_兑现奖励流程</option>
+                        <option value="FL05_招标大厅管理流程" checked="false">FL05_招标大厅管理流程</option>
+                        <option value="GC13_限上项目设计变更管理业务流程" checked="false">GC13_限上项目设计变更管理业务流程</option>
+                        <option value="CW21_生产统计新增报表需求审批业务流程" checked="false">CW21_生产统计新增报表需求审批业务流程</option>
+                        <option value="SC11_分析计划管理业务流程" checked="false">SC11_分析计划管理业务流程</option>
+                        <option value="RL09B_外部培训管理业务流程" checked="false">RL09B_外部培训管理业务流程</option>
+                        <option value="FZ08_合理化建议审批流程" checked="false">FZ08_合理化建议审批流程</option>
+                        <option value="FZ09_合理化建议成果申报流程" checked="false">FZ09_合理化建议成果申报流程</option>
+                        <option value="XZ22_行政事务管理业务流程" checked="false">XZ22_行政事务管理业务流程</option>
+                        <option value="XZ24_社区建设管理业务流程" checked="false">XZ24_社区建设管理业务流程</option>
+                        <option value="GH05_班组建设管理业务流程" checked="false">GH05_班组建设管理业务流程</option>
+                        <option value="XC02_新闻宣传报道申请审批流程" checked="false">XC02_新闻宣传报道申请审批流程</option>
+                        <option value="KJ07_专有技术申报管理业务流程" checked="false">KJ07_专有技术申报管理业务流程</option>
+                        <option value="KJ13_技术论文公开发表审批管理流程" checked="false">KJ13_技术论文公开发表审批管理流程</option>
+                        <option value="HGXS_销售政策管理业务流程" checked="false">HGXS_销售政策管理业务流程</option>
+                        <option value="FL07_合同选商资源库管理流程" checked="false">FL07_合同选商资源库管理流程</option>
+                        <option value="BW05_治安管理业务流程" checked="false">BW05_治安管理业务流程</option>
+                        <option value="XX04A_虚拟化服务器申请审批流程" checked="false">XX04A_虚拟化服务器申请审批流程</option>
+                        <option value="FZ02_固定资产月度投资计划管理业务流程" checked="false">FZ02_固定资产月度投资计划管理业务流程</option>
+                        <option value="JD16_技术服务申请业务流程" checked="false">JD16_技术服务申请业务流程</option>
+                        <option value="FL01_合同管理业务流程" checked="false">FL01_合同管理业务流程</option>
+                        <option value="KJ04B_新产品试生产方案审批流程" checked="false">KJ04B_新产品试生产方案审批流程</option>
+                        <option value="KJ04C_新产品试生产总结审批流程" checked="false">KJ04C_新产品试生产总结审批流程</option>
+                        <option value="FL03_工商管理业务流程" checked="false">FL03_工商管理业务流程</option>
+                        <option value="RL03_员工绩效考核管理业务流程" checked="false">RL03_员工绩效考核管理业务流程</option>
+                        <option value="BW03_交通安全管理业务流程" checked="false">BW03_交通安全管理业务流程</option>
+                        <option value="AJ03_安全专项奖管理业务流程" checked="false">AJ03_安全专项奖管理业务流程</option>
+                        <option value="RL02_专业技术职务任职资格评审管理业务流程" checked="false">RL02_专业技术职务任职资格评审管理业务流程</option>
+                        <option value="AJ26_燕山石化固定用火点审批流程" checked="false">AJ26_燕山石化固定用火点审批流程</option>
+                        <option value="CW20_生产计划调整管理业务流程" checked="false">CW20_生产计划调整管理业务流程</option>
+                        <option value="BG15_接待用餐审批流程" checked="false">BG15_接待用餐审批流程</option>
+                        <option value="FZ13_固定资产投资项目_一类项目和二类项目_立项流程" checked="false">FZ13_固定资产投资项目_一类项目和二类项目_立项流程</option>
+                        <option value="BG17_外报材料管理流程" checked="false">BG17_外报材料管理流程</option>
+                        <option value="BG07_会议申请审批流程" checked="false">BG07_会议申请审批流程</option>
+                        <option value="GH09_职工创新创效冠名成果申报业务流程" checked="false">GH09_职工创新创效冠名成果申报业务流程</option>
+                        <option value="FZ13_固定资产投资项目_三类一般措施项目_立项流程A" checked="false">FZ13_固定资产投资项目_三类一般措施项目_立项流程A</option>
+                        <option value="KJ06_专利管理业务流程" checked="false">KJ06_专利管理业务流程</option>
+                        <option value="XX12A_实时数采中断无仪表" checked="false">XX12A_实时数采中断无仪表</option>
+                        <option value="DB02_党委常委会会议管理业务流程" checked="false">DB02_党委常委会会议管理业务流程</option>
+                        <option value="KJ05_科技奖励管理业务流程" checked="false">KJ05_科技奖励管理业务流程</option>
+                        <option value="DW02_涉外合资企业管理业务流程" checked="false">DW02_涉外合资企业管理业务流程</option>
+                        <option value="AJ12_未遂事件管理业务流程" checked="false">AJ12_未遂事件管理业务流程</option>
+                        <option value="KJ04A_新产品试生产请示审批流程" checked="false">KJ04A_新产品试生产请示审批流程</option>
+                        <option value="SC14_用户服务管理业务流程" checked="false">SC14_用户服务管理业务流程</option>
+                        <option value="JW07_纪委监察部用章申请流程_部门外使用" checked="false">JW07_纪委监察部用章申请流程_部门外使用</option>
+                        <option value="FL02_营业执照等证件使用管理业务流程" checked="false">FL02_营业执照等证件使用管理业务流程</option>
+                        <option value="JD19_质量问题反馈管理业务流程" checked="false">JD19_质量问题反馈管理业务流程</option>
+                        <option value="XX06_网络及基础设施管理业务流程" checked="false">XX06_网络及基础设施管理业务流程</option>
+                        <option value="AJ13_安全检测仪管理业务流程A" checked="false">AJ13_安全检测仪管理业务流程A</option>
+                        <option value="QG11A_申报星级单位流程" checked="false">QG11A_申报星级单位流程</option>
+                        <option value="BW04_武装人防管理业务流程" checked="false">BW04_武装人防管理业务流程</option>
+                        <option value="BG16_用章管理流程" checked="false">BG16_用章管理流程</option>
+                        <option value="XX16_BPM系统申请或变更业务流程" checked="false">XX16_BPM系统申请或变更业务流程</option>
+                        <option value="BW01_生产保卫管理业务流程" checked="false">BW01_生产保卫管理业务流程</option>
+                        <option value="SC08B_年度节能管理业务流程汇总" checked="false">SC08B_年度节能管理业务流程汇总</option>
+                        <option value="AJ11_安全事故管理业务流程" checked="false">AJ11_安全事故管理业务流程</option>
+                        <option value="AJ31_非动火日施工申请业务流程" checked="false">AJ31_非动火日施工申请业务流程</option>
+                        <option value="XZ27_公共管理业务流程" checked="false">XZ27_公共管理业务流程</option>
+                        <option value="AJ07_工伤管理业务流程" checked="false">AJ07_工伤管理业务流程</option>
+                        <option value="CW18_固定资产报废业务流程" checked="false">CW18_固定资产报废业务流程</option>
+                        <option value="BG03_首接负责制流程" checked="false">BG03_首接负责制流程</option>
+                        <option value="GC02_限上项目工程招标管理业务流程" checked="false">GC02_限上项目工程招标管理业务流程</option>
+                        <option value="AJ30A_劳动保护津贴管理业务流程" checked="false">AJ30A_劳动保护津贴管理业务流程</option>
+                        <option value="KJ12_科技成果评定业务流程" checked="false">KJ12_科技成果评定业务流程</option>
+                        <option value="FZ06B_临时追加项目立项流程_社区后勤项目" checked="false">FZ06B_临时追加项目立项流程_社区后勤项目</option>
+                        <option value="KJ09_费用性支出科技项目管理业务流程" checked="false">KJ09_费用性支出科技项目管理业务流程</option>
+                        <option value="SC19_生产清理项目业务流程" checked="false">SC19_生产清理项目业务流程</option>
+                        <option value="XX17_正版软件采购审批流程" checked="false">XX17_正版软件采购审批流程</option>
+                        <option value="QG12B_制度宣贯流程" checked="false">QG12B_制度宣贯流程</option>
+                        <option value="BG09_业务招待费管理业务流程" checked="false">BG09_业务招待费管理业务流程</option>
+                        <option value="CW22_项目后评价管理业务流程" checked="false">CW22_项目后评价管理业务流程</option>
+                        <option value="FL08_合同选商专家库管理流程" checked="false">FL08_合同选商专家库管理流程</option>
+                        <option value="XZ25_社区配套及隐患治理项目管理流程" checked="false">XZ25_社区配套及隐患治理项目管理流程</option>
+                        <option value="BG01_领导班子会管理业务流程" checked="false">BG01_领导班子会管理业务流程</option>
+                        <option value="BG10_外埠用车审批流程" checked="false">BG10_外埠用车审批流程</option>
+                        <option value="GC15_组建项目管理组织机构业务流程" checked="false">GC15_组建项目管理组织机构业务流程</option>
+                        <option value="FL02B_法定代表人负责人身份证复印件借用流程" checked="false">FL02B_法定代表人负责人身份证复印件借用流程</option>
+                        <option value="FZ06_紧急投资项目立项流程" checked="false">FZ06_紧急投资项目立项流程</option>
+                        <option value="HB03_重点监控污染源管理业务流程A" checked="false">HB03_重点监控污染源管理业务流程A</option>
+                        <option value="BG18_对外交流交往或差旅管理流程" checked="false">BG18_对外交流交往或差旅管理流程</option>
+                        <option value="FZ13_固定资产投资项目_三类重点措施_立项流程" checked="false">FZ13_固定资产投资项目_三类重点措施_立项流程</option>
+                        <option value="QG06_经济责任制考核仲裁管理流程" checked="false">QG06_经济责任制考核仲裁管理流程</option>
+                        <option value="SC13_产成品质量控制管理业务流程A" checked="false">SC13_产成品质量控制管理业务流程A</option>
+                        <option value="JD07_废旧物资处置管理业务流程" checked="false">JD07_废旧物资处置管理业务流程</option>
+                        <option value="XZ23_社区服务卡员工交通卡及职工供餐管理" checked="false">XZ23_社区服务卡员工交通卡及职工供餐管理</option>
+                        <option value="XZ17_职工住房证明流程" checked="false">XZ17_职工住房证明流程</option>
+                        <option value="XZ21_信访治安维稳事件管理业务流程" checked="false">XZ21_信访治安维稳事件管理业务流程</option>
+                        <option value="XZ29_土地房产权属管理业务流程" checked="false">XZ29_土地房产权属管理业务流程</option>
+                        <option value="FZ11_固定资产投资项目概算管理业务流程_调整" checked="false">FZ11_固定资产投资项目概算管理业务流程_调整</option>
+                        <option value="BG03_首接负责监督管理业务流程" checked="false">BG03_首接负责监督管理业务流程</option>
+                    </select>
                 </td>
             </tr>
             <tr parent="">
-                <td>开始时间</td>
-                <td>2015-11-13</td>
-            </tr>
-            <tr parent="">
-                <td>截止时间</td>
-                <td>2015-11-21</td>
-            </tr>
-            <tr parent="">
-                <td>完成时间</td>
-                <td />
-            </tr>
-            <tr parent="">
-                <td>完成状态</td>
+                <td>提醒计划</td>
                 <td>
-                    <button title="完成" name="dataId" layouttype="8" displayname="何少辉" hiddenvalue="hesh.yssh" value="e7b8da85-42b1-4e8f-a665-8cd1295ad075" enable="1" />
+                    <select value="0" title="提醒计划" name="planType" alt="" message="提醒计划不能为空！" submitflag="planType" refresh="2">
+                        <option value="0">手动执行</option>
+                        <option value="1">一次</option>
+                        <option value="2">周</option>
+                        <option value="3">月</option>
+                    </select>
+                </td>
+            </tr>
+            <tr parent="1">
+                <td>日</td>
+                <td>
+                    <date submitflag="planType" name="planDay" value="" type="date" Current="true" earlycontrol="" latecontrol="" message="请选择日期" />
+                </td>
+            </tr>
+            <tr parent="2">
+                <td>周</td>
+                <td>
+                    <select submitflag="planType" name="planWeek" value="" multi="true" alt="" keyboard="number" refresh="1" message="请选择日期">
+                        <option value="1">周一</option>
+                        <option value="2">周二</option>
+                        <option value="3">周三</option>
+                        <option value="4">周四</option>
+                        <option value="5">周五</option>
+                        <option value="6">周六</option>
+                        <option value="7">周日</option>
+                    </select>
+                </td>
+            </tr>
+            <tr parent="3">
+                <td>月</td>
+                <td>
+                    <select submitflag="planType" name="planMonth" value="" multi="true" alt="" keyboard="number" refresh="1" message="请选择日期">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
                 </td>
             </tr>
         </table>
-        <table title="消息列表" expend="true" editfield="true" id="content" columns="1">
-            <tr parent="">
-                <td>
-                    <textarea value="" name="message" username="何少辉" alt="" message="" submitflag="message" />
-                </td>
-            </tr>
-            <tr parent="">
-                <td>
-                    <linklist id="0" name="mainPerson" value="" username="何少辉" mulit="true" title="添加转发" message="" displayname="" submitflag="mainPerson" />
-                </td>
-            </tr>
-            <tr parent="">
-                <td>
-                    <event title="回复" name="show1" layouttype="5" value="hesh.yssh" username="何少辉" />
-                </td>
-            </tr>
-        </table>
+        <table title="添加任务步骤" type="addBtn" name="show"><![CDATA[<table title="任务详细" expend="true" editfield="true" id="" columns="2" name="show" type="3" delete="true"><tr parent=""><td>任务顺序</td><td><text value="" name="sortIndex" alt="" message="任务步骤顺序不能为空！" submitflag="sortIndex" keyboard="number" /></td></tr><tr parent=""><td>工作内容</td><td><textarea name="stepTaskContent" value="" submitflag="" alt="工作内容不能为空！" message="工作内容不能为空!" /></td></tr></table>]]></table>
     </form>
-    <operation layouttype="2">
-        <table title="请选择驳回原因" expend="true" editfield="true" id="content" columns="1">
-            <tr parent="">
-                <td>
-                    <refuse name="refuse" title="请选择驳回原因" value="" mulit="" submitflag="refuse" message="请选择驳回原因">
-                        <option checked="true" value="bushibenrenzhize">不是本人职责</option>
-                        <option checked="true" value="qita">其他</option>
-                    </refuse>
-                </td>
-            </tr>
-            <tr parent="">
-                <td>
-                    <textarea name="comment" alt="请输入驳回原因" message="请输入驳回原因" value="请输入驳回原因" link="qita" submitflag=""/>
-                </td>
-            </tr>
-        </table>
-    </operation>
 </root>

@@ -12,8 +12,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+     [self prepareData];
     [self configureUI];
-    [self prepareData];
+   
 }
 
 -(void)configureUI{
