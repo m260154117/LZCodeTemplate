@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "AFNetworking.h"
-//#import "ISTHUDManager.h"
-#import "ISTHUDManager.h"
+//#import "LZHUDManager.h"
+#import "LZHUDManager.h"
 
 static NSString *kGetSyncDict         = @"/webapi/dict/getDictList";            //同步字典信息
 static NSString *kGetDictionaryByPid  = @"/webapi/dict/getDictDetail";          //获取字典项内容

@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "MBProgressHUD.h"
 
-@interface ISTHUDManager : NSObject <MBProgressHUDDelegate>
+@interface LZHUDManager : NSObject <MBProgressHUDDelegate>
 
 @property(nonatomic,strong)NSMutableArray *viewArray;
 
-+ (ISTHUDManager *)defaultManager;
++ (LZHUDManager *)defaultManager;
 //显示持续等待框
 - (void)showHUDInView:(UIView *)view withText:(NSString *)text;
 //显示提示性等待框，自动消失

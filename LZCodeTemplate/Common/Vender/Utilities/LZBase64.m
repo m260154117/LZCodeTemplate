@@ -26,9 +26,9 @@
 //  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#import "ISTBase64.h"
+#import "LZBase64.h"
 
-@implementation ISTBase64
+@implementation LZBase64
 
 static const char base64EncodingTable[64] = {
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
@@ -122,7 +122,7 @@ static const char base64DecodingTable[] =
         return @"";
     }
     const char* data = [string UTF8String];
-    return [ISTBase64 encode:[NSData dataWithBytes:data length:slength]];
+    return [LZBase64 encode:[NSData dataWithBytes:data length:slength]];
 }
 
 + (NSData*)decode:(NSString*)base64string
@@ -186,7 +186,7 @@ static const char base64DecodingTable[] =
     {
         return @"";
     }
-    NSData* data = [ISTBase64 decode:string];
+    NSData* data = [LZBase64 decode:string];
     return [[NSString alloc] initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding];
 }
 

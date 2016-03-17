@@ -9,7 +9,7 @@
 #import "NSString+Util.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonCryptor.h>
-#import "ISTBase64.h"
+#import "LZBase64.h"
 #import "OpenUDID.h"
 
 #define gKey    @"assasishe168comappapiche"
@@ -87,7 +87,7 @@
                        &movedBytes);
     
     NSData      *myData = [NSData dataWithBytes:(const void *)bufferPtr length:(NSUInteger)movedBytes];
-    NSString    *result = [ISTBase64 encode:myData];
+    NSString    *result = [LZBase64 encode:myData];
     
     free(bufferPtr);
     
@@ -102,7 +102,7 @@
 /* 3DES解密 */
 - (NSString *)decrypt3DES:(NSString *)key iv:(NSString *)iv
 {
-    NSData      *encryptData = [ISTBase64 decode:self];
+    NSData      *encryptData = [LZBase64 decode:self];
     size_t      plainTextBufferSize = [encryptData length];
     const void  *vplainText = [encryptData bytes];
     

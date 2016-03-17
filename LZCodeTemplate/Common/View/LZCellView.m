@@ -1,21 +1,21 @@
 //
-//  ISTCellView.m
+//  LZCellView.m
 //  CarLife
 //
 //  Created by MiaoLizhuang on 16/3/15.
 //  Copyright © 2016年 高大鹏. All rights reserved.
 //
 
-#import "ISTCellView.h"
+#import "LZCellView.h"
 #import "UUDatePicker.h"
-#import "ISTHUDManager.h"
+#import "LZHUDManager.h"
 #define kStartDateTag 100
 #define kEndDateTag 101
-@interface ISTCellView ()<UITextFieldDelegate>
+@interface LZCellView ()<UITextFieldDelegate>
 
 @end
 
-@implementation ISTCellView{
+@implementation LZCellView{
     
     NSMutableArray * _buttonArray;
     
@@ -259,7 +259,7 @@
 {
     if (textField.tag == kStartDateTag) {
         if (![self isEarlierDate:_startTime withData:_endTime]) {
-            [[ISTHUDManager defaultManager] showHUDWithInfo:@"开始时间不能晚于结束时间"];
+            [[LZHUDManager defaultManager] showHUDWithInfo:@"开始时间不能晚于结束时间"];
             _startTime = _endTime;
         }
         
@@ -270,7 +270,7 @@
     else if (textField.tag == kEndDateTag)
     {
         if ([self isEarlierDate:_endTime withData:_startTime]) {
-            [[ISTHUDManager defaultManager] showHUDWithInfo:@"结束时间不能早于开始时间"];
+            [[LZHUDManager defaultManager] showHUDWithInfo:@"结束时间不能早于开始时间"];
             _endTime = _startTime;
         }
         if (_endTime) {

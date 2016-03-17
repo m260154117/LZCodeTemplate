@@ -1,5 +1,5 @@
 //
-//  ISTCellView.h
+//  LZCellView.h
 //  CarLife
 //
 //  Created by MiaoLizhuang on 16/3/15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ISTCellView : UIView
+@interface LZCellView : UIView
 @property (nonatomic ,strong) void (^clickBlock)(NSInteger index);
 @property (nonatomic,strong)void(^dateBlock)(NSString * startDate ,NSString * endDate );
 

@@ -7,11 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "keyBoardViewController.h"
-#import "xmlDataViewController.h"
-#import "fitTableViewController.h"
-#import "searchPhoneViewController.h"
-#import "peopleViewController.h"
 #import "BaseCell.h"
 #define CELL_HEIGHT  40
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>{
@@ -27,18 +22,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self prepareData];
+    [self configureUI];
     
 }
--(void)configureUI{
-    
-    
-    self.title = @"首页";
 
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, KSCREENHEIGH) style:UITableViewStylePlain];
+
+
+- (LZTopBar *)creatTopBarView:(CGRect)frame
+{
+    // 导航头
+    _tbTop = [[LZTopBar alloc] initWithFrame:frame];
+    [_tbTop.btnTitle setTitle:@"首页" forState:UIControlStateNormal];
+    
+    
+    return _tbTop;
+}
+
+-(void)configureUI{
+
+    self.navigationController.navigationBar.hidden = YES;
+        _tbTop = [self creatTopBarView:kTopFrame];
+        [self.view addSubview:_tbTop];
+    
+    _contentView.height += kTabBarHeight;
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.tableFooterView = [[UIView alloc]init];
-    [self.view addSubview:_tableView];
+    [_contentView addSubview:_tableView];
 
 }
 
@@ -84,43 +96,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    switch (indexPath.row) {
-        case 0:
-        {
-            keyBoardViewController * keyBoardVC =[[keyBoardViewController alloc]init];
-            [self.navigationController pushViewController:keyBoardVC animated:YES];
-        }
-            break;
-        case 1:
-        {
-            xmlDataViewController * xmlDataVC =[[xmlDataViewController alloc]init];
-            [self.navigationController pushViewController:xmlDataVC animated:YES];
-        }
-            break;
-        case 2:
-        {
-            fitTableViewController * cellFitVC =[[fitTableViewController alloc]init];
-            [self.navigationController pushViewController:cellFitVC animated:YES];
-        }
-            break;
-        case 3:
-        {
-            searchPhoneViewController * searchVC =[[searchPhoneViewController alloc]init];
-            [self.navigationController pushViewController:searchVC animated:YES];
-        }
-            break;
-        case 4:
-        {
-            peopleViewController * peopleVC =[[peopleViewController alloc]init];
-            [self.navigationController pushViewController:peopleVC animated:YES];
-        }
-            break;
-
-        default:
-            break;
-    }
-
-
+    
 }
 
 

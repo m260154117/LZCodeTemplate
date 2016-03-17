@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LZTopBar.h"
+@interface BaseViewController : UIViewController<UIScrollViewDelegate>{
+    
+    LZTopBar *_tbTop;
+    UIScrollView *_contentView;
+}
 
-@interface BaseViewController : UIViewController
+@property (nonatomic, assign) float iosChangeFloat;
 -(void)configureUI;
 -(void)prepareData;
 @end

@@ -6,20 +6,20 @@
 //  Copyright © 2015年 高大鹏. All rights reserved.
 //
 
-#import "ISTHUDManager.h"
+#import "LZHUDManager.h"
 #import "HttpReachabilityHelper.h"
 
 static NSInteger kWaittingTag = 1111;
 
-@implementation ISTHUDManager
+@implementation LZHUDManager
 
-static ISTHUDManager *instance = nil;
+static LZHUDManager *instance = nil;
 
-+ (ISTHUDManager *)defaultManager
++ (LZHUDManager *)defaultManager
 {
     static dispatch_once_t p;
     dispatch_once(&p,^{
-        instance = [[ISTHUDManager alloc] init];
+        instance = [[LZHUDManager alloc] init];
     });
     return instance;
     

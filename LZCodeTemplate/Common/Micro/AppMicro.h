@@ -10,8 +10,9 @@
 #define AppMicro_h
 
 #define kScreen_Width  [UIScreen mainScreen].bounds.size.width
-#define KSCREENHEIGH  [UIScreen mainScreen].bounds.size.height
-
+#define kScreen_Height  [UIScreen mainScreen].bounds.size.height
+#define kTopFrame               CGRectMake(0, 0, kScreen_Width, kNavHeight+self.iosChangeFloat)
+#define IOSVersion              [[[UIDevice currentDevice] systemVersion] floatValue]
 /**服务器主域名设置**/
 #define kMainDomain             @"http://gdws.nsenz.com/webapp"
 //#define kMainDomain             @"http://11.2.252.233:6666/autolife"
@@ -20,7 +21,8 @@
 //广告、商城现在在用
 #define kWscMainDomain           @"http://gdwsc.nsenz.com"
 
-
+#define kNavHeight              kAdjustLength(148)
+#define kTabBarHeight           kAdjustLength(160)
 #define kAdjustLength(x)        kScreen_Width*(x)/1080
 /**分割线及边框**/
 #define kLinePixel           1

@@ -28,7 +28,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ISTBase64 : NSObject
+@interface LZBase64 : NSObject
 
 + (NSString*)encode:(NSData*)data;
 + (NSString*)encodeString:(NSString*)string;
