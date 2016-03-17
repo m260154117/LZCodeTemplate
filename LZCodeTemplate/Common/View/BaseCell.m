@@ -22,7 +22,7 @@
 
 -(void)configureUIAndMulti{
     
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5,KSCREENWIDTH-60, 0)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5,kScreen_Width-60, 0)];
     self.titleLabel.font = [UIFont systemFontOfSize:18.0];
     self.titleLabel.numberOfLines = 0;
     self.titleLabel.textAlignment = NSTextAlignmentLeft;

@@ -39,7 +39,7 @@
         make.top.mas_equalTo(100);
     }];
     
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 200, KSCREENWIDTH-40, KSCREENHEIGH-200) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 200, kScreen_Width-40, KSCREENHEIGH-200) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -129,7 +129,7 @@ _titleArray=@[
 
 -(float)getCellHeightWithString:(NSString*)string{
     
-    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, KSCREENWIDTH-60, 0)];
+    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width-60, 0)];
     label.numberOfLines = 0;
     label.text = string;
     label.font = [UIFont systemFontOfSize:18.0];

@@ -31,14 +31,15 @@
 }
 -(void)configureUI{
     
+    
+    self.title = @"首页";
 
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, KSCREENWIDTH, KSCREENHEIGH) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, KSCREENHEIGH) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.tableFooterView = [[UIView alloc]init];
     [self.view addSubview:_tableView];
-    
-    
+
 }
 
 -(void)prepareData{

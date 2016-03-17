@@ -19,4 +19,5 @@
 #import "MASConstraint.h"
 #import "UMessage.h"
 #import <MobAPI/MobAPI.h>
+#import "UIView+Util.h"
 #endif /* LZCodeTemplate_pch */
