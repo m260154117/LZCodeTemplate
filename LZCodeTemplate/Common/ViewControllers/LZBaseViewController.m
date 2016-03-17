@@ -1,14 +1,14 @@
 //
-//  BaseViewController.m
+//  LZBaseViewController.m
 //  LZCodeTemplate
 //
 //  Created by MiaoLizhuang on 16/1/4.
 //  Copyright © 2016年 MiaoLizhuang. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "LZBaseViewController.h"
 
-@implementation BaseViewController
+@implementation LZBaseViewController
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

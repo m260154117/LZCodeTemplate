@@ -30,7 +30,9 @@
 #define kCornerRadius        5.0
 #define kBorderWidth         1.0
 
-
+/**文件路径相关设置**/
+#define kDocumentPath   [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]
+#define kLocalDBPath   [kDocumentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"BasicDB.db"]]
 /**颜色函数和常用颜色**/
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1]
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
@@ -71,4 +73,7 @@
 #define kFontTinyBold           [UIFont boldSystemFontOfSize:11]
 #define kFontMini               [UIFont systemFontOfSize:10]
 #define kFontMiniBold           [UIFont boldSystemFontOfSize:10]
+
+
+static NSString *kContentItemSelectNotification     = @"kContentItemSelectNotification";    //下导航切换
 #endif /* AppMicro_h */

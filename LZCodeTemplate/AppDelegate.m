@@ -18,10 +18,31 @@
     // Override point for customization after application launch.
 //    [UMessage startWithAppkey:@"567bccf7e0f55af420002fa1" launchOptions:launchOptions];
      [MobAPI registerApp:@"d80334c23602"];
-    ViewController * vc= [[ViewController alloc]init];
-    UINavigationController * nav= [[UINavigationController alloc]initWithRootViewController:vc];
-    self.window.rootViewController = nav;
+    //导入数据库
+    if (![[NSFileManager defaultManager] fileExistsAtPath:kLocalDBPath]) {
+        NSString *dbPath = [[NSBundle mainBundle] pathForResource:@"BasicDB" ofType:@"db"];
+        [[NSFileManager defaultManager] copyItemAtPath:dbPath
+                                                toPath:kLocalDBPath
+                                                 error:nil];
+    }
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = kWhiteColor;
+    [self layoutMainView:nil];
+
     return YES;
+}
+- (void)layoutMainView:(id)sender
+{
+    
+    self.mainVC = [[LZContentViewController alloc] initWithNibName:nil bundle:nil];
+    self.rootNavigation =[[LZBaseNavigationController alloc] initWithRootViewController:self.mainVC];
+    self.rootNavigation.navigationBarHidden = YES;
+    
+    [self.window setRootViewController:self.rootNavigation];
+    
+    
+    [self.window makeKeyAndVisible];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

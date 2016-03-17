@@ -1,5 +1,5 @@
 //
-//  CellViewController.h
+//  HomeViewController.h
 //  LZCodeTemplate
 //
 //  Created by MiaoLizhuang on 16/3/17.
@@ -8,6 +8,6 @@
 
 #import "LZBaseViewController.h"
 
-@interface CellViewController : LZBaseViewController
+@interface HomeViewController : LZBaseViewController
 
 @end

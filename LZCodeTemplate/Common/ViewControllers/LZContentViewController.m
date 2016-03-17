@@ -7,17 +7,13 @@
 //
 
 #import "LZContentViewController.h"
-#import "ISTHomeViewController.h"
-#import "ISTRefuelViewController.h"
-#import "ISTMineViewController.h"
-#import "ISTStaticDef.h"
+
 #import "TabbarItem.h"
 #import "FMDataHelper.h"
-#import "GSYMineViewController.h"
-#import "User.h"
-#import "FuelPayViewController.h"
-#import "LoginCenter.h"
 
+#import "HomeViewController.h"
+#import "HotSalesViewController.h"
+#import "MineViewController.h"
 @interface LZContentViewController ()
 {
     UIView *_contentView;
@@ -28,10 +24,6 @@
 @implementation LZContentViewController
 
 
-- (void)test:(id)sender
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:kShowMenusNotification object:nil];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -152,26 +144,19 @@
     TabbarItem * item2 = [[TabbarItem alloc]init];
     item2.selectImg = @"tabbar_item2_selected";
     item2.unSelectImg = @"tabbar_item2_normal";
-    item2.type = @"jiayou";
-    item2.title = @"导航";
+    item2.type = @"hotSales";
+    item2.title = @"热卖";
     item2.highlighted = NO;
     [items addObject:item2];
     
+    
     TabbarItem * item3 = [[TabbarItem alloc]init];
-    item3.selectImg = @"tabbar_item3_selected";
-    item3.unSelectImg = @"tabbar_item3_normal";
-    item3.type = @"fukuan";
-    item3.title = @"付款";
+    item3.selectImg = @"tabbar_item4_selected";
+    item3.unSelectImg = @"tabbar_item4_normal";
+    item3.type = @"mine";
+    item3.title = @"我的";
     item3.highlighted = NO;
     [items addObject:item3];
-    
-    TabbarItem * item4 = [[TabbarItem alloc]init];
-    item4.selectImg = @"tabbar_item4_selected";
-    item4.unSelectImg = @"tabbar_item4_normal";
-    item4.type = @"mine";
-    item4.title = @"我的";
-    item4.highlighted = NO;
-    [items addObject:item4];
     
     
     NSMutableArray *menuArray = [NSMutableArray array];
@@ -180,36 +165,29 @@
         NSString *type = tb.type;
         if ([type isEqualToString:@"home"])
         {
-            ISTHomeViewController *theVC = [[ISTHomeViewController alloc] init];
+            HomeViewController *theVC = [[HomeViewController alloc] init];
             UINavigationController *theNavigation = [[UINavigationController alloc] initWithRootViewController:theVC];
             theNavigation.navigationBarHidden = YES;
             [controllers addObject:theNavigation];
-        }  else if([type isEqualToString:@"mine"])
+        }else if([type isEqualToString:@"hotSales"]){
+            HotSalesViewController *ISTRefuelVC = [[HotSalesViewController alloc]init];
+            UINavigationController *theNavigation = [[UINavigationController alloc] initWithRootViewController:ISTRefuelVC];
+            theNavigation.navigationBarHidden = YES;
+            [controllers addObject:theNavigation];
+        }
+        else if([type isEqualToString:@"mine"])
         {
-            GSYMineViewController *theVC = [[GSYMineViewController alloc] init];
+            MineViewController *theVC = [[MineViewController alloc] init];
             UINavigationController *theNavigation = [[UINavigationController alloc] initWithRootViewController:theVC];
             theNavigation.navigationBarHidden = YES;
             [controllers addObject:theNavigation];
         }
-        else if([type isEqualToString:@"jiayou"]){
-            ISTRefuelViewController *ISTRefuelVC = [[ISTRefuelViewController alloc]init];
-            UINavigationController *theNavigation = [[UINavigationController alloc] initWithRootViewController:ISTRefuelVC];
-            theNavigation.navigationBarHidden = YES;
-            [controllers addObject:theNavigation];
-        }else if([type isEqualToString:@"fukuan"]){
-            
-            FuelPayViewController *oilGunVC = [[FuelPayViewController alloc] init];
-            UINavigationController *theNavigation = [[UINavigationController alloc] initWithRootViewController:oilGunVC];
-            theNavigation.navigationBarHidden = YES;
-            [controllers addObject:theNavigation];
-            
-            
-            
-        }else
+        
+        else
         {
-            
+
             //展示不区分类型
-            ISTBaseViewController *theVC= [[ISTBaseViewController alloc] initWithNibName:nil bundle:nil];
+            LZBaseViewController *theVC= [[LZBaseViewController alloc] initWithNibName:nil bundle:nil];
             UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:theVC];
             navigation.navigationBarHidden = YES;
             theVC.view.backgroundColor = kRedColor;
@@ -241,7 +219,7 @@
         [_customTabbarView removeFromSuperview];
         self.customTabbarView = nil;
     }
-    self.customTabbarView = [[ISTCustomBar alloc] initWithFrame:CGRectMake(0, kScreen_Height-kTabBarHeight, kScreen_Width, kTabBarHeight) withContent:menuArray];
+    self.customTabbarView = [[LZCustomBar alloc] initWithFrame:CGRectMake(0, kScreen_Height-kTabBarHeight, kScreen_Width, kTabBarHeight) withContent:menuArray];
     self.customTabbarView.delegate = self;
     [self.customTabbarView setSelectedIndex:0];
     self.customTabbarView.backgroundColor = [UIColor colorWithRed:65.0/255.0 green:64.0/255.0 blue:66.0/255.0 alpha:1.0];

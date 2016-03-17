@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>myScores</key>
+	<string>GSYMineScoresViewController</string>
+	<key>erpCard</key>
+	<string>OilExtractionCardViewController</string>
+	<key>gasCardBook</key>
+	<string>GasCardBookViewController</string>
+	<key>gasCardNav</key>
+	<string>ISTRefuelViewController</string>
+	<key>fuleCard</key>
+	<string>GasCardColumnController</string>
+	<key>car</key>
+	<string>MyCarsViewController</string>
+	<key>refuelHistory</key>
+	<string>RefuelHistoryViewController</string>
+	<key>coupon</key>
+	<string>ECouponCaseViewController</string>
+	<key>address</key>
+	<string>MineAddressViewController</string>
+	<key>changePWD</key>
+	<string>MineModifyPasswordViewController</string>
+	<key>gasStationNavi</key>
+	<string>ISTRefuelViewController</string>
+	<key>mine</key>
+	<string>MineAboutViewController</string>
+	<key>recharge</key>
+	<string>GasCardRechargeViewController</string>
+</dict>
+</plist>

@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LZContentViewController.h"
+#import "LZBaseNavigationController.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) LZContentViewController *mainVC;
+@property (strong, nonatomic) LZBaseNavigationController *rootNavigation;
 
 @end
 

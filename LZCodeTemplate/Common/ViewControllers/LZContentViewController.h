@@ -7,7 +7,7 @@
 //
 
 //#import "CMTabBarController.h"
-#import "ISTCustomBar.h"
+#import "LZCustomBar.h"
 
 //个人中心
 typedef enum
@@ -20,7 +20,7 @@ typedef enum
 @interface LZContentViewController : UITabBarController<ISTCustomBarDelegate>
 //:CMTabBarController
 
-@property (nonatomic, strong) ISTCustomBar *customTabbarView;
+@property (nonatomic, strong) LZCustomBar *customTabbarView;
 @property (nonatomic, assign) ModelCode code;
 
 - (void)loadMenuItems;
