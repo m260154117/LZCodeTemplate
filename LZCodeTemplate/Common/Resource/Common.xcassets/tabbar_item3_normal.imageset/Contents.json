@@ -2,17 +2,16 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "助手.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "助手@2x.png",
+      "filename" : "bar-liaotian01@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "助手@3x.png",
+      "filename" : "bar-liaotian01@1.5.png",
       "scale" : "3x"
     }
   ],

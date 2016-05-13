@@ -222,7 +222,7 @@
     self.customTabbarView = [[LZCustomBar alloc] initWithFrame:CGRectMake(0, kScreen_Height-kTabBarHeight, kScreen_Width, kTabBarHeight) withContent:menuArray];
     self.customTabbarView.delegate = self;
     [self.customTabbarView setSelectedIndex:0];
-    self.customTabbarView.backgroundColor = [UIColor colorWithRed:65.0/255.0 green:64.0/255.0 blue:66.0/255.0 alpha:1.0];
+    //self.customTabbarView.backgroundColor = [UIColor colorWithRed:65.0/255.0 green:64.0/255.0 blue:66.0/255.0 alpha:1.0];
     [self.view addSubview:self.customTabbarView];
     [self.view bringSubviewToFront:self.customTabbarView];
 }

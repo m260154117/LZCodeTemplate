@@ -11,6 +11,9 @@
 #import "UIButton+WebCache.h"
 #import "AppDelegate.h"
 
+#define selectedColor  RGBCOLOR(40, 205, 141)
+#define normalColor    RGBCOLOR(44, 48, 68)
+
 #define kItemLineTag               110
 @implementation LZCustomBar
 
@@ -19,6 +22,7 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        
         // Initialization code
         self.tabbars = [NSMutableArray array];
         self.clipsToBounds = NO;
@@ -57,22 +61,23 @@
             [barItem setImage:[UIImage imageNamed:tb.selectImg] forState:UIControlStateSelected];
              [barItem setImage:[UIImage imageNamed:tb.unSelectImg] forState:UIControlStateNormal];
             barItem.imageView.contentMode = UIViewContentModeScaleAspectFit;
-            barItem.imageEdgeInsets = [barItem setImageEdgeInsetsFromCenterOffSet:CGVectorMake(0, 0) imageSize:CGSizeMake(kTabbarItemWidth, btmFrame.size.height)];
+            barItem.imageEdgeInsets = [barItem setImageEdgeInsetsFromCenterOffSet:CGVectorMake(0, -10) imageSize:CGSizeMake(kTabbarItemWidth, btmFrame.size.height)];
             barItem.adjustsImageWhenHighlighted = NO;
             barItem.showsTouchWhenHighlighted = NO;
             barItem.imageView.clipsToBounds = NO;
             
-            UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 17, barItem.width, barItem.height-10)];
-            //titleLabel.text = [NSString stringWithFormat:@"%@",[infoDic objectForKey:@"Title"]];
+            UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 19, barItem.width, barItem.height-10)];
+            titleLabel.text = tb.title;
             titleLabel.textAlignment = NSTextAlignmentCenter;
             titleLabel.backgroundColor = [UIColor clearColor];
             titleLabel.textColor = kWhiteColor;
-            titleLabel.font = [UIFont systemFontOfSize:14];
+            titleLabel.tag = 100;
+            titleLabel.font = [UIFont systemFontOfSize:13];
             //headerLabel.text = @"test";
-            //            [barItem addSubview:titleLabel];
+                        [barItem addSubview:titleLabel];
             //line:
-            UIView *line = [[UIView alloc] initLineWithFrame:CGRectMake(0, 0, barItem.width, kLinePixel) color:kLineColor];
-//            [barItem addSubview:line];
+            UIView *line = [[UIView alloc] initLineWithFrame:CGRectMake(0, 0, self.width, 1.0) color:kLightTextColor];
+            [self addSubview:line];
 //            line.hidden = YES;
             line.tag = kItemLineTag;
             
@@ -90,7 +95,15 @@
 
 - (void)onTabbarItemTouched:(id)sender
 {
+    for (UIButton * bnt in self.tabbars) {
+        UILabel * label = [bnt viewWithTag:100];
+        label.textColor =normal;
+
+    }
+    
     UIButton *item = (UIButton *)sender;
+    UILabel * label = [item viewWithTag:100];
+    label.textColor =selectedColor;
     if(_delegate && [_delegate respondsToSelector:@selector(didTabbarViewButtonTouched:)])
     {
         [self.delegate didTabbarViewButtonTouched:item.tag];
