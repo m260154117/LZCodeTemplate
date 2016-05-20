@@ -7,92 +7,49 @@
 //
 
 #import "HomeViewController.h"
-#import "CellView_Button.h"
-#import "CellView_selectDate.h"
-#import "CellView_labelAndField.h"
-#import "LZVerifyCodeButton.h"
-#import "CellView_selecter.h"
-@interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "LZActivityCell.h"
+#import "LZActivityModel.h"
+@interface HomeViewController ()
 
 @end
 
 @implementation HomeViewController
 {
-    UITableView * _tableView;
-    NSMutableArray * _dataArray;
-    
-    NSString * _startTime;
-    NSString * _endTime;
-    
-    NSInteger _buttonIndex;
-    
-    
-
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [self prepareData];
-    [self configureUI];
-   
+    [self getActivityList];
     
 }
-
--(void)prepareData{
-    
-    _startTime = @"2013-09-23";
-    _endTime = @"";
-    
-    NSMutableDictionary * dic = [[NSMutableDictionary alloc]init];
-    [dic setValue:@"身份证" forKey:@"labeltitle"];
-    [dic setValue:@"" forKey:@"fieldtext"];
-    [dic setValue:@"请填入身份证号" forKey:@"fieldplace"];
-    [dic setValue:@"1" forKey:@"isHaveYzm"];
-    
-    NSMutableDictionary * dic1 = [[NSMutableDictionary alloc]init];
-    [dic1 setValue:@"证件类型" forKey:@"labeltitle"];
-    [dic1 setValue:@"" forKey:@"fieldtext"];
-    [dic1 setValue:@"请填入身份证号" forKey:@"fieldplace"];
-
-    _dataArray = [NSMutableArray arrayWithArray:@[@"",@"",dic,dic1]];
-    _buttonIndex = 0;
-}
-
--(void)configureUI{
-    _tbTop = [self creatTopBarView:kTopFrame];
-    self.view.backgroundColor = kMainBGColor;
-    [self.view addSubview:_tbTop];
-    
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, _contentView.height) style:UITableViewStylePlain];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.backgroundColor = [UIColor whiteColor];
-    [_contentView addSubview:_tableView];
-
-    
-  
-    
-}
-
-
 - (LZTopBar *)creatTopBarView:(CGRect)frame
 {
     // 导航头
     LZTopBar *tbTop = [[LZTopBar alloc] initWithFrame:frame];
-    [tbTop.btnTitle setTitle:@"首页" forState:UIControlStateNormal];
-    
-    
+    [tbTop.btnTitle setTitle:@"动态" forState:UIControlStateNormal];
     return tbTop;
 }
+-(void)prepareData{
+    [super prepareData];
+    
+   }
+
+-(void)configureUI{
+    [super configureUI];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _contentView.backgroundColor = kMainBGColor;
+}
+
+
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row ==0 || indexPath.row ==1) {
-        return kAdjustLength(270);
-    }else{
-        return kAdjustLength(170);
-    }
+//    if (indexPath.row ==0 || indexPath.row ==1) {
+//        return kAdjustLength(270);
+//    }else{
+//        return kAdjustLength(170);
+//    }
+    return [self getHeightWithIndex:indexPath.row];
     
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -102,50 +59,78 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString * cellId = @"cellId";
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    LZActivityCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        cell = [[LZActivityCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     [cell.contentView removeAllSubviews];
     cell.backgroundColor = [UIColor clearColor];
     cell.contentView.backgroundColor = [UIColor clearColor];
-    if (indexPath.row ==0) {
-        CellView_selectDate * view = [[CellView_selectDate alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, kAdjustLength(270)) AndShowTitle:@"选择日期" AndDate1:_startTime AndDate2:_endTime AndBlock:^(NSString *startDate, NSString *endDate) {
-            _startTime = startDate;
-            _endTime = endDate;
-            NSLog(@"%@==%@",_startTime,_endTime);
-           
-        }];
-         [cell.contentView addSubview:view];
-    }else if(indexPath.row ==1){
-        
-        CellView_Button * button = [[CellView_Button alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, kAdjustLength(270)) AndShowTitle:@"选择类型" AndIndex:_buttonIndex AndTitleArray:@[@"全部",@"团款积分",@"全部积分",@"申请"] AndBlock:^(NSInteger index) {
-            NSLog(@"%ld",(long)index);
-            _buttonIndex = index;
-        }];
-        [cell.contentView addSubview:button];
-    }else if (indexPath.row ==2){
-        CellView_labelAndField * tf = [[CellView_labelAndField alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, kAdjustLength(170) )AndInfo:_dataArray[indexPath.row] AndBlock:^(NSString *text) {
-          NSMutableDictionary * tempDic=  _dataArray[indexPath.row];
-            [tempDic setValue:text forKey:@"fieldtext"];
-            
-        }];
-        [tf.YZMbtn setBlock:^(LZVerifyCodeButton *button){
-
-        }];
-
-        [cell.contentView addSubview:tf];
-        
-    }else if (indexPath.row ==3){
-        CellView_selecter * tf1 = [[CellView_selecter alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, kAdjustLength(170) )AndInfo:_dataArray[indexPath.row] AndBlock:^(NSString *text) {
-            NSMutableDictionary * tempDic=  _dataArray[indexPath.row];
-            [tempDic setValue:text forKey:@"fieldtext"];
-            
-        }];
-         [cell.contentView addSubview:tf1];
-    }
+    
+    [cell configureUIWithModel:_dataArray[indexPath.row]];
+  
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(CGFloat)getHeightWithIndex:(NSInteger)index{
+    
+    CGFloat _y = kAdjustLength(20);//起始高度
+    _y +=kAdjustLength(150)+kAdjustLength(20);//头像
+    
+    UILabel * label = [[UILabel alloc]init];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = kFontLarge_2;
+    label.textColor = kLightTextColor;
+    label.textAlignment = NSTextAlignmentLeft;
+    label.numberOfLines =0;
+    LZActivityModel * model = _dataArray[index];
+    label.text = model.content;
+
+    
+    NSMutableAttributedString * attributedString1 = [[NSMutableAttributedString alloc] initWithString:label.text];
+    NSMutableParagraphStyle * paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle1 setLineSpacing:10];
+    [attributedString1 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle1 range:NSMakeRange(0, [label.text length])];
+    [label setAttributedText:attributedString1];
+
+    CGSize titleSize = [model.content boundingRectWithSize:CGSizeMake(kScreen_Width-kAdjustLength(40), MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:kFontLarge_2,NSParagraphStyleAttributeName:paragraphStyle1} context:nil].size;
+    
+    _y += kAdjustLength(20)+titleSize.height;
+    
+    _y += kAdjustLength(170);
+    
+    _y+=kAdjustLength(40);
+    
+    
+    NSLog(@"vc%f",_y);
+    return _y;
+    
+}
+
+#pragma mark - requset
+-(void)getActivityList{
+    
+    LZActivityModel * model = [[LZActivityModel alloc]init];
+    model.content = @"这是一个测试";
+    model.username = @"路人甲";
+    model.headerImageStr = @"default_user.jpg";
+    [_dataArray addObject:model];
+    
+    LZActivityModel * model1 = [[LZActivityModel alloc]init];
+    model1.content = @"四川新闻客户端记者 袁敏）5月13上午，遂宁(微博)交警在遂宁城区街面巡逻时，发现一辆违停的轿车。交警检查发现，轿车前挡风玻璃还放了一张手写的纸条，“交警叔叔：您好，上楼接病人，耽搁10分钟，请勿抄牌，谢谢！”在留言结尾，车主还留下了联系电话，并画上了一张笑脸";
+    model1.username = @"奔跑吧兄弟";
+    model1.headerImageStr = @"default_user.jpg";
+    [_dataArray addObject:model1];
+    
+    [_tableView reloadData];
+
+    
+    
 }
 
 @end

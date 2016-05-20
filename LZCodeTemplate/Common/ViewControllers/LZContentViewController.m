@@ -137,7 +137,7 @@
     item1.selectImg = @"tabbar_item1_selected";
     item1.unSelectImg = @"tabbar_item1_normal";
     item1.type = @"home";
-    item1.title = @"首页";
+    item1.title = @"动态";
     item1.highlighted = YES;
     [items addObject:item1];
     
@@ -145,18 +145,28 @@
     item2.selectImg = @"tabbar_item2_selected";
     item2.unSelectImg = @"tabbar_item2_normal";
     item2.type = @"hotSales";
-    item2.title = @"热卖";
+    item2.title = @"朋友";
     item2.highlighted = NO;
     [items addObject:item2];
     
-    
     TabbarItem * item3 = [[TabbarItem alloc]init];
-    item3.selectImg = @"tabbar_item4_selected";
-    item3.unSelectImg = @"tabbar_item4_normal";
-    item3.type = @"mine";
-    item3.title = @"我的";
+    item3.selectImg = @"tabbar_item3_selected";
+    item3.unSelectImg = @"tabbar_item3_normal";
+    item3.type = @"hotSales";
+    item3.title = @"参与";
     item3.highlighted = NO;
     [items addObject:item3];
+    
+    
+    
+    
+    TabbarItem * item4 = [[TabbarItem alloc]init];
+    item4.selectImg = @"tabbar_item4_selected";
+    item4.unSelectImg = @"tabbar_item4_normal";
+    item4.type = @"mine";
+    item4.title = @"我的";
+    item4.highlighted = NO;
+    [items addObject:item4];
     
     
     NSMutableArray *menuArray = [NSMutableArray array];

@@ -6,8 +6,8 @@
 //  Copyright © 2016年 MiaoLizhuang. All rights reserved.
 //
 
-#import "LZBaseViewController.h"
+#import "ISTTableViewController.h"
 
-@interface HomeViewController : LZBaseViewController
+@interface HomeViewController : ISTTableViewController
 
 @end
