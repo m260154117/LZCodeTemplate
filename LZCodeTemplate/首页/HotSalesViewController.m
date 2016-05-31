@@ -42,7 +42,7 @@
     NSMutableDictionary * dic1 = [[NSMutableDictionary alloc]init];
     [dic1 setValue:@"2" forKey:@"level"];
     [dic1 setValue:@"开始时间:2015-09-03" forKey:@"starttime"];
-    [dic1 setValue:@"去泰山" forKey:@"content"];
+    [dic1 setValue:@"http://baidu.com" forKey:@"content"];
     [dic1 setValue:@"#旅游" forKey:@"kind"];
     
     _dataArray = [NSMutableArray arrayWithArray:@[dic,dic1]];
