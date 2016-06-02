@@ -1,19 +1,19 @@
 //
-//  HomeViewController.m
+//  HotSalesViewController.m
 //  LZCodeTemplate
 //
 //  Created by MiaoLizhuang on 16/3/17.
 //  Copyright © 2016年 MiaoLizhuang. All rights reserved.
 //
 
-#import "HomeViewController.h"
-#import "LZActivityCell.h"
+#import "HotSalesViewController.h"
 #import "LZActivityModel.h"
-@interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "LZActivityCell.h"
+@interface HotSalesViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
 
-@implementation HomeViewController
+@implementation HotSalesViewController
 {
     
     UITableView * _tableView;
@@ -27,7 +27,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-   
+    [self prepareData];
+    [self configureUI];
     [self getActivityList];
 }
 
@@ -41,14 +42,14 @@
 }
 -(void)configureUI{
     
-    
+   
     self.view.backgroundColor = kMainBGColor;
     
     
-    _selectView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, 20+kAdjustLength(148))];
+     _selectView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, 20+kAdjustLength(148))];
     _selectView.backgroundColor = RGBCOLOR(253, 80, 100);
     
-    NSArray * titleArray = @[@"年",@"月",@"日"];
+    NSArray * titleArray = @[@"我的糗事",@"我的收藏",@"我的参与"];
     for (int i=0; i<titleArray.count; i++) {
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(i*kScreen_Width/titleArray.count, 30, kScreen_Width/titleArray.count, 34) ;
@@ -187,13 +188,13 @@
     
     UIView * indexView = [_selectView viewWithTag:200];
     [UIView animateWithDuration:0.5 animations:^{
-        indexView.frame = CGRectMake((sender.tag-100)*sender.width+30, indexView.origin.y, indexView.width, indexView.height) ;
+         indexView.frame = CGRectMake((sender.tag-100)*sender.width+30, indexView.origin.y, indexView.width, indexView.height) ;
     }];
-    
+   
     
 }
 -(void)queryBtnClick:(UIButton*)sender{
-}
+    }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

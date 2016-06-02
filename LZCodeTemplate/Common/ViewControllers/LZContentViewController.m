@@ -14,6 +14,7 @@
 #import "HomeViewController.h"
 #import "HotSalesViewController.h"
 #import "MineViewController.h"
+#import "FriendListViewController.h"
 @interface LZContentViewController ()
 {
     UIView *_contentView;
@@ -144,8 +145,8 @@
     TabbarItem * item2 = [[TabbarItem alloc]init];
     item2.selectImg = @"tabbar_item2_selected";
     item2.unSelectImg = @"tabbar_item2_normal";
-    item2.type = @"hotSales";
-    item2.title = @"朋友";
+    item2.type = @"friend";
+    item2.title = @"审核";
     item2.highlighted = NO;
     [items addObject:item2];
     
@@ -153,7 +154,7 @@
     item3.selectImg = @"tabbar_item3_selected";
     item3.unSelectImg = @"tabbar_item3_normal";
     item3.type = @"hotSales";
-    item3.title = @"参与";
+    item3.title = @"糗事";
     item3.highlighted = NO;
     [items addObject:item3];
     
@@ -191,6 +192,13 @@
             UINavigationController *theNavigation = [[UINavigationController alloc] initWithRootViewController:theVC];
             theNavigation.navigationBarHidden = YES;
             [controllers addObject:theNavigation];
+        }
+        else if ([type isEqualToString:@"friend"]){
+            FriendListViewController *theVC = [[FriendListViewController alloc] init];
+            UINavigationController *theNavigation = [[UINavigationController alloc] initWithRootViewController:theVC];
+            theNavigation.navigationBarHidden = YES;
+            [controllers addObject:theNavigation];
+
         }
         
         else

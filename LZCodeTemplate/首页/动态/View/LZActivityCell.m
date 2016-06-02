@@ -64,6 +64,13 @@
     
     _y +=label.height+kAdjustLength(20);
     
+    UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(kAdjustLength(50), _y, bgview.width-kAdjustLength(100), bgview.width-kAdjustLength(100))];
+    imageView.backgroundColor = [UIColor clearColor];
+    imageView.image = [UIImage imageNamed:@"default_user.jpg"];
+    [bgview addSubview:imageView];
+    _y +=(bgview.width-kAdjustLength(100));
+
+    
     
     NSArray * normalImageArray = @[@"icon_for",@"icon_against",@"button_comment"];
     NSArray * selectedImageArray = @[@"icon_for_active",@"icon_against_active",@"button_comment"];
@@ -79,6 +86,7 @@
     }
    
     _y +=kAdjustLength(170);
+    
     
     bgview.frame = CGRectMake(0, 0, kScreen_Width, _y);
     
